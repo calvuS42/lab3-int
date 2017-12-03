@@ -15,7 +15,7 @@ public:
 	Rational();
 	Rational(Rational& A);
 	Rational(double a, double b);
-	void scor(Rational A);
+	void scor();
 	void operator =(Rational A);
 	bool operator ==(Rational A);
 	Rational operator +(Rational A);

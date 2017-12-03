@@ -30,10 +30,10 @@ Rational::Rational(double a, double b)
 	n = b;
 }
 
-void Rational::scor(Rational A)
+void Rational::scor()
 {
-	while (nod(A.m, A.n) > 1) {
-		int t = nod(A.m, A.n);
+	while (nod(m, n) > 1) {
+		int t = nod(m, n);
 		m /= t;
 		n /= t;
 	}
@@ -43,6 +43,13 @@ void Rational::operator=(Rational A)
 {
 	m = A.m;
 	n = A.n;
+}
+
+bool Rational::operator==(Rational A)
+{
+	this->scor();
+	A.scor();
+	return (m == A.m && n == A.n) ?  true :  false;
 }
 
 ostream & operator<<(ostream & stream, Rational ration)
