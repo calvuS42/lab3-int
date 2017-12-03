@@ -98,6 +98,11 @@ Rational Rational::operator/(Rational A)
 
 void Rational::operator^(int a)
 {
+	Rational t(*this);
+	while (a) {
+		*this = *this * t;
+		a--;
+	}
 }
 
 ostream & operator<<(ostream & stream, Rational ration)
