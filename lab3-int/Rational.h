@@ -9,8 +9,6 @@ class Rational
 private:
 	int m;
 	int n;
-	string ration = to_string(m) + " / " + to_string(n);
-
 public:
 	Rational();
 	Rational(Rational& A);
@@ -24,6 +22,7 @@ public:
 	Rational operator /(Rational A);
 	void operator ^(int a);
 	friend ostream& operator<<(ostream & stream, Rational ration);
+	friend istream& operator>>(istream & stream, Rational ration);
 };
 
 int nod(int, int);

@@ -107,6 +107,12 @@ void Rational::operator^(int a)
 
 ostream & operator<<(ostream & stream, Rational ration)
 {
-	stream << ration.ration;
+	stream << to_string(ration.m) + " / " + to_string(ration.n);
+	return stream;
+}
+
+istream & operator>>(istream & stream, Rational ration)
+{
+	stream >> ration.m >> ration.n;
 	return stream;
 }
