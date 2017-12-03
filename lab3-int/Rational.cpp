@@ -24,7 +24,7 @@ Rational::Rational(Rational & A)
 	n = A.n;
 }
 
-Rational::Rational(double a, double b)
+Rational::Rational(int a, int b)
 {
 	m = a;
 	n = b;
@@ -50,6 +50,54 @@ bool Rational::operator==(Rational A)
 	this->scor();
 	A.scor();
 	return (m == A.m && n == A.n) ?  true :  false;
+}
+
+Rational Rational::operator+(Rational A)
+{
+	this->scor();
+	A.scor();
+	int Mt = m*A.n + A.m*n;
+	int Nt = n*A.n;
+	Rational t(Mt, Nt);
+	t.scor();
+	return t;
+}
+
+Rational Rational::operator-(Rational A)
+{
+	this->scor();
+	A.scor();
+	int Mt = m*A.n - A.m*n;
+	int Nt = n*A.n;
+	Rational t(Mt, Nt);
+	t.scor();
+	return t;
+}
+
+Rational Rational::operator*(Rational A)
+{
+	this->scor();
+	A.scor();
+	int Mt = m*A.m;
+	int Nt = n*A.n;
+	Rational t(Mt, Nt);
+	t.scor();
+	return t;
+}
+
+Rational Rational::operator/(Rational A)
+{
+	this->scor();
+	A.scor();
+	int Mt = m*A.n;
+	int Nt = n*A.m;
+	Rational t(Mt, Nt);
+	t.scor();
+	return t;
+}
+
+void Rational::operator^(int a)
+{
 }
 
 ostream & operator<<(ostream & stream, Rational ration)
