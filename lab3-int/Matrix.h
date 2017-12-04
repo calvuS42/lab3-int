@@ -3,8 +3,8 @@ template <typename Type>
 class Matrix
 {
 private:
-	int sizeColums;
-	int sizeRows;
+	int sizeColums; // кількість стовпців
+	int sizeRows;	// кількість рядків
 	Type Matrix[sizeColums][sizeRows];
 public:
 	Matrix();
@@ -13,7 +13,6 @@ public:
 	Matrix operator +(Matrix A);
 	Matrix operator -(Matrix A);
 	Matrix operator *(Matrix A);
-	Matrix operator /(Matrix A);
 	Matrix operator ~(Matrix A);
 };
 
@@ -74,14 +73,19 @@ inline Matrix Matrix<Type>::operator-(Matrix A)
 template<typename Type>
 inline Matrix Matrix<Type>::operator*(Matrix A)
 {
-	return Matrix();
+	if (sizeColums == A.sizeRows) {
+		Matrix b(sizeRows, A.sizeColums);
+		for (int i = 0; i < b.sizeColums; i++) {
+			for (int j = 0; j < b.sizeRows; j++) {
+				for (int k = 0, c = 0; k < sizeColums, c < A.sizeRows; k++, c++) {
+					b.Matrix[i][j] += Matrix[k][j] + A.Matrix[i][c];
+				}
+			}
+		}
+	}
 }
 
-template<typename Type>
-inline Matrix Matrix<Type>::operator/(Matrix A)
-{
-	return Matrix();
-}
+
 
 template<typename Type>
 inline Matrix Matrix<Type>::operator~(Matrix A)

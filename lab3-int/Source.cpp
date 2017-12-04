@@ -2,9 +2,7 @@
 
 
 void main() {
-	Rational a;
-	cout << "enter the value of a. \n";
-	cin >> a;
+	Rational a(3, 4);
 	cout << a << endl;
 	Rational b(12, 9);
 	cout << b << endl;
@@ -17,5 +15,6 @@ void main() {
 	cout << c << endl;
 	c = a / b;
 	cout << c << endl;
+
 	system("pause");
 }
