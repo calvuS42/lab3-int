@@ -13,7 +13,7 @@ public:
 	Matrix operator +(Matrix A);
 	Matrix operator -(Matrix A);
 	Matrix operator *(Matrix A);
-	Matrix operator ~(Matrix A);
+	friend ostream operator << (ostream& stream, Matrix matrix);
 };
 
 template<typename Type>
@@ -85,10 +85,12 @@ inline Matrix Matrix<Type>::operator*(Matrix A)
 	}
 }
 
-
-
-template<typename Type>
-inline Matrix Matrix<Type>::operator~(Matrix A)
-{
-	return Matrix();
+ostream operator<<(ostream & stream, Matrix matrix) {
+	for (int i = 0; i < matrix.sizeRows; i++) {
+		for (int j = 0; j < matrix.sizeColums; j++) {
+			stream << matrix.Matrix[j][i];
+		}
+		stream<<"\n";
+	}
+	return stream;
 }
